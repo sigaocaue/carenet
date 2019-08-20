@@ -10,7 +10,7 @@ module.exports = {
     "rules": {
         "semi": ["error", "never"],
         "no-unused-expressions": "off",
-        "indent": [2, 2, {"indentSwitchCase": true}]
+        "indent": [2, 2, {"SwitchCase": 1}]
     },
     "globals": {
         "Atomics": "readonly",
