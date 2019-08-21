@@ -2,13 +2,13 @@ version: "3"
 # Named volumes
 volumes:
   # Mongodb Data
-  techmainda-mongo:
+  carenet-mongo:
     driver: local
 
 services:
   api:
     image: ambientum/node:lts
-    container_name: techmainda-node
+    container_name: carenet-node
     command: npm run dev
     volumes:
       - .:/var/www/app
@@ -18,14 +18,14 @@ services:
       - mongodb
 
   mongodb:
-    container_name: techmainda-mongo
+    container_name: carenet-mongo
     restart: on-failure
     image: bitnami/mongodb:3.6
     ports:
       - "27017:27017"
     volumes:
-      - techmainda-mongo:/data/db
+      - carenet-mongo:/data/db
     environment:
-      - MONGODB_USERNAME=my_user
-      - MONGODB_PASSWORD=password123
-      - MONGODB_DATABASE=my_database
+      - MONGODB_USERNAME=carenet
+      - MONGODB_PASSWORD=carenet@mongo
+      - MONGODB_DATABASE=carenet

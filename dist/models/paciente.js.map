@@ -1,0 +1,1 @@
+{"version":3,"file":"paciente.js","sourceRoot":"","sources":["../../server/models/paciente.ts"],"names":[],"mappings":";AAAA,SAAQ,CAAC,SAAS,EAAE,SAAS;IAC3B,MAAM,IAAI,GAAE,SAAS,CAAC,MAAM,CAAC,WAAW,EAAE;QACxC,EAAE,EAAE;YACF,IAAI,EACN,AADO;SACN;KACJ,CAAC,CAAA;AACF,CAAC"}
