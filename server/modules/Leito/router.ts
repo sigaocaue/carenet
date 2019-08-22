@@ -57,7 +57,7 @@ class PacienteRoutes {
         if (cmdResult.n) {
           res.send(204)
         } else {
-          res.send(404)
+          throw new NotFoundError('Documento não encontrado.')
         }
         return next()
       })

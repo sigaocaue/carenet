@@ -1,26 +1,26 @@
 import { Request, Response, NextFunction } from 'express'
-import { Paciente } from './paciente-model'
+import { Enfermeiro } from './enfermeiro-model'
 
-class PacienteRoutes {
+class EnfermeiroRoutes {
   index(req: Request, res: Response, next: NextFunction) {
-    Paciente.find().then(pacientes => {
-      res.json(pacientes)
+    Enfermeiro.find().then((enfermeiros: any) => {
+      res.json(enfermeiros)
       return next()
     })
   }
 
   create(req: Request, res: Response, next: NextFunction) {
-    const paciente = new Paciente(req.body)
-    paciente.save().then(paciente => {
-      res.json(paciente)
+    const enfermeiro = new Enfermeiro(req.body)
+    enfermeiro.save().then((enfermeiro: any) => {
+      res.json(enfermeiro)
       return next()
     })
   }
 
   findOne(req: Request, res: Response, next: NextFunction) {
-    Paciente.findById(req.params.id).then(paciente => {
-      if (paciente) {
-        res.json(paciente)
+    Enfermeiro.findById(req.params.id).then((enfermeiro: any) => {
+      if (enfermeiro) {
+        res.json(enfermeiro)
         return next()
       }
 
@@ -31,13 +31,13 @@ class PacienteRoutes {
 
   update(req: Request, res: Response, next: NextFunction) {
     const options = { overwrite: true }
-    Paciente.update({ _id: req.params.id }, req.body, options)
+    Enfermeiro.update({ _id: req.params.id }, req.body, options)
       .exec()
       .then((result: any) => {
         if (result.n) {
-          Paciente.findById(req.params.id).then(paciente => {
-            if (paciente) {
-              res.json(paciente)
+          Enfermeiro.findById(req.params.id).then((enfermeiro: any) => {
+            if (enfermeiro) {
+              res.json(enfermeiro)
               return next()
             }
 
@@ -51,7 +51,7 @@ class PacienteRoutes {
   }
 
   destroy(req: Request, res: Response, next: NextFunction) {
-    Paciente.remove({ _id: req.params.id })
+    Enfermeiro.remove({ _id: req.params.id })
       .exec()
       .then((cmdResult: any) => {
         if (cmdResult.n) {
@@ -65,4 +65,4 @@ class PacienteRoutes {
   }
 }
 
-export default PacienteRoutes
+export default EnfermeiroRoutes

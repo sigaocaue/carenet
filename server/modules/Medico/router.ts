@@ -1,26 +1,26 @@
 import { Request, Response, NextFunction } from 'express'
-import { Paciente } from './paciente-model'
+import { Medico } from './medico-model'
 
-class PacienteRoutes {
+class MedicoRoutes {
   index(req: Request, res: Response, next: NextFunction) {
-    Paciente.find().then(pacientes => {
-      res.json(pacientes)
+    Medico.find().then((medicos: any) => {
+      res.json(medicos)
       return next()
     })
   }
 
   create(req: Request, res: Response, next: NextFunction) {
-    const paciente = new Paciente(req.body)
-    paciente.save().then(paciente => {
-      res.json(paciente)
+    const medico = new Medico(req.body)
+    medico.save().then((medico: any) => {
+      res.json(medico)
       return next()
     })
   }
 
   findOne(req: Request, res: Response, next: NextFunction) {
-    Paciente.findById(req.params.id).then(paciente => {
-      if (paciente) {
-        res.json(paciente)
+    Medico.findById(req.params.id).then((medico: any) => {
+      if (medico) {
+        res.json(medico)
         return next()
       }
 
@@ -31,13 +31,13 @@ class PacienteRoutes {
 
   update(req: Request, res: Response, next: NextFunction) {
     const options = { overwrite: true }
-    Paciente.update({ _id: req.params.id }, req.body, options)
+    Medico.update({ _id: req.params.id }, req.body, options)
       .exec()
       .then((result: any) => {
         if (result.n) {
-          Paciente.findById(req.params.id).then(paciente => {
-            if (paciente) {
-              res.json(paciente)
+          Medico.findById(req.params.id).then((medico: any) => {
+            if (medico) {
+              res.json(medico)
               return next()
             }
 
@@ -51,7 +51,7 @@ class PacienteRoutes {
   }
 
   destroy(req: Request, res: Response, next: NextFunction) {
-    Paciente.remove({ _id: req.params.id })
+    Medico.remove({ _id: req.params.id })
       .exec()
       .then((cmdResult: any) => {
         if (cmdResult.n) {
@@ -65,4 +65,4 @@ class PacienteRoutes {
   }
 }
 
-export default PacienteRoutes
+export default MedicoRoutes

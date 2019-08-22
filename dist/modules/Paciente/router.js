@@ -53,7 +53,7 @@ class PacienteRoutes {
                 res.send(204);
             }
             else {
-                throw new NotFoundError('Documento não encontrado.');
+                res.send(404);
             }
             return next();
         })
